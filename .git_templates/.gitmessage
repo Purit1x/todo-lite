@@ -1,0 +1,35 @@
+# Type (required): Describes the purpose of the commit
+#   feat:     A new feature
+#   fix:      A bug fix
+#   docs:     Documentation only changes
+#   style:    Changes that do not affect the meaning of the code
+#   refactor: A code change that neither fixes a bug nor adds a feature
+#   test:     Adding missing tests or correcting existing tests
+#   chore:    Changes to the build process or auxiliary tools
+#   perf:     A code change that improves performance
+#   ci:       Changes to CI configuration files and scripts
+#   revert:   Reverts a previous commit
+#
+# Scope (optional): The scope of the commit (e.g., component, module, file)
+# Subject (required): Brief description using imperative mood
+# Body (optional): Detailed description of the changes
+# Footer (optional): References to issues, breaking changes, etc.
+# ======================================================================
+
+# Type (required): feat|fix|docs|style|refactor|test|chore|perf|ci|revert
+# Scope (optional): module, component, file, etc.
+# Subject (required): brief description in imperative mood, no more than 80 characters
+# Example: feat(Utility): add user authentication service
+
+# Body (optional): detailed description of changes and reasoning
+# Wrap at 72 characters. Use | for line breaks if needed.
+What:
+
+
+How/Why:
+
+# Footer (optional): references to issues, breaking changes, etc.
+# Example: Closes #123, BREAKING CHANGE: API interface modified
+# Footer: 
+
+# --- Remove all comment lines (starting with #) before committing ---
