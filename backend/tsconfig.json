@@ -43,6 +43,9 @@
         "paths": {
             "@/*": [
                 "./src/*"
+            ],
+            "@/prisma": [
+                "./src/generated/prisma"
             ]
         }
     },
