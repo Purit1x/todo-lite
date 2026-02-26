@@ -4,7 +4,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import "element-plus/theme-chalk/el-message.css"
+import "element-plus/theme-chalk/el-message.css";
+import "@/styles/font.css";
 
 const app = createApp(App)
 

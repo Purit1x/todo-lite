@@ -63,7 +63,7 @@ const handleLogin = async () => {
         await formRef.value.validate();
 
         await store.login(form.identifier, form.password);
-        await router.push("/tasks");
+        await router.push("/workbench/tasks");
     } catch (err: unknown) {
         if (err == false) {
             ElMessage.error("请检查输入的凭证");
