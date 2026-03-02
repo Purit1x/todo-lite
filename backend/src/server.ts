@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import authRoutes from "@/routes/auth.routes";
+import todoRoutes from "@/routes/todo.routes";
 import cors from 'cors';
 
 dotenv.config();
@@ -31,6 +32,7 @@ app.use(cors({
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/todo", todoRoutes);
 
 app.get('/', (req, res) => {
     res.send("Todo-Lite Backend is running");
