@@ -10,8 +10,8 @@ export const createTodo = async (userId: string, data: {
     return prisma.todo.create({
         data: {
             title: data.title,
-            description: data.description ?? null,
-            priority: data.priority ?? null,
+            description: data.description || null,
+            priority: data.priority || null,
             dueDate: data.dueDate ? new Date(data.dueDate) : null,
             userId
         }
@@ -29,7 +29,7 @@ export const getTodos = async (userId: string) => {
 };
 
 export const updateTodo = async (userId: string, id: string, data: {
-    title?: string;
+    title: string;
     description?: string;
     completed?: boolean;
     priority?: TodoPriority;
@@ -44,8 +44,10 @@ export const updateTodo = async (userId: string, id: string, data: {
     return prisma.todo.update({
         where: { id },
         data: {
-            ...data,
-            dueDate: data.dueDate ? new Date(data.dueDate) : null
+            title: data.title,
+            description: data.description || null,
+            priority: data.priority || null,
+            dueDate: data.dueDate ? new Date(data.dueDate) : null,
         }
     });
 };

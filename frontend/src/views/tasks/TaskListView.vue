@@ -205,6 +205,8 @@ const submitForm = async () => {
         }
     } finally {
         submitting.value = false;
+        dialogVisible.value = false;
+        editingTodo.value = null;
     }
 };
 
