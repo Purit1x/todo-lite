@@ -1,7 +1,10 @@
+export type TodoPriority = "LOW" | "MEDIUM" | "HIGH" | undefined | null;
+
 export interface Todo {
     id: string;
     title: string;
     description: string | null;
+    priority: TodoPriority;
     completed: boolean;
     dueDate: string | null;
     createdAt: string;
@@ -39,7 +42,7 @@ export const getTodos = async (): Promise<Todo[]> => {
             }
         };
 
-        const response = await fetch(`${import.meta.env.VITE_API_BASE}/api/todo`, requestOptions)
+        const response = await fetch(`${import.meta.env.VITE_API_BASE}/todo`, requestOptions)
 
         if (!response.ok) {
             throw new Error(`Failed to fetch todos: ${response.status} ${response.statusText}`);
@@ -63,10 +66,10 @@ export const createTodo = async (data: createTodoData) => {
             body: JSON.stringify(data)
         };
 
-        const response = await fetch(`${import.meta.env.VITE_API_BASE}/api/todo`, requestOptions);
+        const response = await fetch(`${import.meta.env.VITE_API_BASE}/todo`, requestOptions);
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch todos: ${response.status} ${response.statusText}`);
+            throw new Error(`Failed to create todos: ${response.status} ${response.statusText}`);
         }
         return response.json();
     } catch (err: unknown) {
@@ -87,7 +90,7 @@ export const updateTodo = async (id: string, data: updateTodoData) => {
             body: JSON.stringify(data)
         };
 
-        const response = await fetch(`${import.meta.env.VITE_API_BASE}/api/todo/${id}`, requestOptions);
+        const response = await fetch(`${import.meta.env.VITE_API_BASE}/todo/${id}`, requestOptions);
         if (!response.ok) {
             throw new Error(`Failed to update todo: ${response.status} ${response.statusText}`);
         }
@@ -108,7 +111,7 @@ export const deleteTodo = async (id: string) => {
                 ...authHeader
             },
         };
-        const response = await fetch(`${import.meta.env.VITE_API_BASE}/api/todo/${id}`, requestOptions);
+        const response = await fetch(`${import.meta.env.VITE_API_BASE}/todo/${id}`, requestOptions);
         if (!response.ok) {
             throw new Error(`Failed to delete todo: ${response.status} ${response.statusText}`);
         }

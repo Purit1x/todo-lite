@@ -5,7 +5,7 @@
                 <div class="logo">Todo-Lite</div>
                 <div class="user-actions">
                     <span class="username">欢迎，{{ user?.username }}</span>
-                    <ElButton type="text" @click="handleLogout" size="small">登出</ElButton>
+                    <ElButton link @click="handleLogout" size="small">登出</ElButton>
                 </div>
             </div>
             <div class="header-nav">
@@ -73,7 +73,7 @@ const handleTabClick = (tab: TabClickPane) => {
 .header {
     background-color: #ffffff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    z-index: 10000;
+    z-index: 1000;
     position: sticky;
     top: 0;
     display: flex;
