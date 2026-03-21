@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { register as apiRegister, login as apiLogin } from "@/api/auth";
+import Cookies from 'js-cookie';
 
 interface User {
     email: string;
@@ -9,8 +10,8 @@ interface User {
 
 export const useAuthStore = defineStore("auth", {
     state: () => ({
-        token: localStorage.getItem("token") || null,
-        user: JSON.parse(localStorage.getItem("user") || "null") as User | null,
+        token: Cookies.get("token") || null,
+        user: JSON.parse(Cookies.get("user") || "null") as User | null,
         loading: false,
         error: null as string | null
     }),
@@ -48,15 +49,23 @@ export const useAuthStore = defineStore("auth", {
         setAuth(token: string, user: User) {
             this.token = token;
             this.user = user;
-            localStorage.setItem("token", token);
-            localStorage.setItem("user", JSON.stringify(user));
+            Cookies.set("token", token, {
+                expires: 7,
+                secure: import.meta.env.PROD,
+                sameSite: "strict"
+            });
+            Cookies.set("user", JSON.stringify(user), {
+                expires: 7,
+                secure: import.meta.env.PROD,
+                sameSite: "strict"
+            });
         },
 
         logout() {
             this.token = null;
             this.user = null;
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
+            Cookies.remove("token");
+            Cookies.remove("user");
         }
     }
 });
