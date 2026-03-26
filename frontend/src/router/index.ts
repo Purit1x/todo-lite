@@ -31,7 +31,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const authStore = useAuthStore();
-    const whiteList = ["/login", "register"];
+    const whiteList = ["/login", "/register"];
     if (!whiteList.includes(to.path) && !authStore.token) {
         return next("/login");
     } else {

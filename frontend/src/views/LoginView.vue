@@ -63,12 +63,16 @@ const handleLogin = async () => {
         await formRef.value.validate();
 
         await store.login(form.identifier, form.password);
+
+        await new Promise(resolve => setTimeout(resolve, 100));
+
         await router.push("/workbench/tasks");
     } catch (err: unknown) {
         if (err == false) {
             ElMessage.error("请检查输入的凭证");
         } else if (err instanceof Error) {
             ElMessage.error(err.message);
+            console.log(err);
         } else {
             ElMessage.error("Unknown Error - Login");
         }
